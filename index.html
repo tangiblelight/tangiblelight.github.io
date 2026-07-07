@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><title>The EID Wireless Masterclass</title><style>/* Alignment */
+mtable.right-align mtd,
+mtable mtd.right-align,
+mtable.left-align mtd.right-align,
+mtable.aligned mtd:nth-child(odd) {
+  justify-items: end;
+  text-align: right;
+}
+mtable.cases mtd,
+mtable.left-align mtd,
+mtable mtd.left-align,
+mtable.aligned mtd:nth-child(even),
+math:is(:not([display])) > mtable.multiline-equation mtd {
+  justify-items: start;
+  text-align: left;
+}
+mtable.cases mtd,
+mtable.aligned mtd,
+mtable mtd.flushed,
+mtable mtd.left-flush {
+  padding-left: 0;
+}
+mtable.cases mtd,
+mtable.aligned mtd,
+mtable mtd.flushed,
+mtable mtd.right-flush {
+  padding-right: 0;
+}
+
+/* Tables */
+mtable {
+  math-style: inherit;
+}
+mtd {
+  math-depth: auto-add;
+  math-style: compact;
+  math-shift: compact;
+}
+
+/* Equations */
+mtable.multiline-equation mtd {
+  math-depth: inherit;
+  math-style: inherit;
+  math-shift: inherit;
+  padding: 0;
+}
+math > mtable.multiline-equation mtr:not(:last-child) mtd {
+  padding-bottom: 0.5em;
+}
+
+/* Fractions */
+mfrac {
+  padding-inline: 0;
+  margin-inline: 0.1em;
+}
+
+/* Accents */
+mover[accent="true" i] > :first-child {
+  font-feature-settings: "dtls";
+}
+mover.dotted[accent="true" i] > :first-child {
+  font-feature-settings: "dtls" 0;
+}
+
+/* Other rules for scriptlevel, displaystyle and math-shift */
+munder > :nth-child(2),
+munderover > :nth-child(2) {
+  math-shift: compact
+}
+munder[accentunder="true" i] > :not(:first-child),
+mover[accent="true" i] > :not(:first-child) {
+  math-depth: inherit;
+  math-style: inherit;
+  math-shift: inherit;
+}</style>  <script type="module" crossorigin src="/assets/components-tbmtkQ_6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/components-Der2jJHl.css">
+</head><body><main><h1>The EID Wireless Masterclass</h1><mc-diorama orbit="false"><script type="text/mc-world">
+p 0 0 0 dropper facing=up triggered=false
+p 0 1 0 dropper facing=up triggered=false
+p 0 2 0 dropper facing=east triggered=false
+p 1 0 0 hopper facing=west enabled=true
+p 1 1 0 oak_trapdoor facing=north open=false half=top
+p 1 2 0 oak_trapdoor facing=north open=true half=top
+</script></mc-diorama><p>Everything I know about Entity ID Wireless Redstone (EID Wireless) for Minecraft Java Edition 1.14+.</p><p>A written supplement to <a href="https://youtu.be/81OV1BltMQ8">iPlayGames’s Wireless Masterclass</a>.</p><section class="callout warn"><h3>Warning:</h3><p>In versions 1.14 - 26.1, only multiplayer servers are supported.</p><p>Singleplayer is supported in 26.2+. See <a href="interference.html#singleplayer">Section 2.2</a> for details.</p><p>It works on most (but not all) versions of Paper servers. See <a href="interference.html#paper">Section 2.3</a> for details.</p><p>It does not work with any version of Bedrock Edition.</p></section><nav role="doc-toc"><h2 id="loc-1">Outline</h2><ol style="list-style-type: none"><li><div><a href="core.html#core"><span class="prefix">1 -</span> Core Mechanics</a></div><ol style="list-style-type: none"><li><a href="core.html#loc-1"><span class="prefix">1.1 -</span> Entity IDs</a></li><li><a href="core.html#loc-2"><span class="prefix">1.2 -</span> Stationary Item Optimization</a></li><li><a href="core.html#loc-3"><span class="prefix">1.3 -</span> Observable Drop Delay</a></li></ol></li><li><div><a href="interference.html#loc-1"><span class="prefix">2 -</span> Causes of Interference</a></div><ol style="list-style-type: none"><li><a href="interference.html#loc-2"><span class="prefix">2.1 -</span> Other Entities</a></li><li><a href="interference.html#singleplayer"><span class="prefix">2.2 -</span> Singleplayer (before 26.2)</a></li><li><a href="interference.html#paper"><span class="prefix">2.3 -</span> Paper Servers</a></li><li><a href="interference.html#loc-3"><span class="prefix">2.4 -</span> Unloaded Chunks</a></li><li><a href="interference.html#loc-4"><span class="prefix">2.5 -</span> Lazy Chunks</a></li></ol></li><li><div><a href="tilesets.html#tilesets"><span class="prefix">3 -</span> Tilesets</a></div><ol style="list-style-type: none"><li><a href="tilesets.html#loc-1"><span class="prefix">3.1 -</span> The Scheduled Tick Priority Queue</a></li><li><a href="tilesets.html#loc-2"><span class="prefix">3.2 -</span> Binary Tilesets</a></li><li><a href="tilesets.html#loc-3"><span class="prefix">3.3 -</span> Permutation Tilesets</a></li><li><a href="tilesets.html#loc-4"><span class="prefix">3.4 -</span> Lexicographic Tilesets</a></li><li><a href="tilesets.html#loc-5"><span class="prefix">3.5 -</span> Jamming</a></li><li><a href="tilesets.html#observer-bug"><span class="prefix">3.6 -</span> Observer Bug</a></li><li><div><a href="tilesets.html#loc-6"><span class="prefix">3.7 -</span> Tables</a></div><ol style="list-style-type: none"><li><a href="tilesets.html#block-priority"><span class="prefix">3.7.1 -</span> Block Tick Priorities</a></li><li><a href="tilesets.html#block-delay"><span class="prefix">3.7.2 -</span> Block Tick Delays</a></li><li><a href="tilesets.html#fluid-delay"><span class="prefix">3.7.3 -</span> Fluid Tick Delays</a></li></ol></li></ol></li><li><div><a href="block-event-delay.html#loc-1"><span class="prefix">4 -</span> Block Event Delay</a></div><ol style="list-style-type: none"><li><a href="block-event-delay.html#loc-2"><span class="prefix">4.1 -</span> Single-Priority Loops</a></li></ol></li></ol></nav></main><footer><nav><ul><li class="btn"><a href="core.html#core">Next: Core Mechanics</a></li></ul></nav></footer></body></html>
