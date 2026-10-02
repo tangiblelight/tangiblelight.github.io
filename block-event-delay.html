@@ -72,9 +72,9 @@ mover[accent="true" i] > :not(:first-child) {
   math-depth: inherit;
   math-style: inherit;
   math-shift: inherit;
-}</style>  <script type="module" crossorigin src="/assets/components-DkbxrW4p.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/components-Xrw7Mq_7.css">
-</head><body><main><h2 id="loc-1">4 - Block Event Delay</h2><p>Block Event Delay is not a complete substitute for tilesets, but it can significantly reduce the required length of tilesets and compact repetetive systems. It is based on a behavior of piston push lists which repeats a given global order for multiple components. A smaller tileset can set a ‘template’ ordering for a few components, then BED can trivially ‘repeat’ that order for a subsequent set of components.</p><mc-diorama theta="160" radius="5" autoplay loop><script type="text/mc-world">p -1    0  0 observer              facing=west  powered=false
+}</style>  <script type="module" crossorigin src="/assets/components-B9xM9RWL.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/components-Cw3ZgpOo.css">
+</head><body><header></header><main><h2 id="loc-1">4 - Block Event Delay</h2><p>Block Event Delay is not a complete substitute for tilesets, but it can significantly reduce the required length of tilesets and compact repetetive systems. It is based on a behavior of piston push lists which repeats a given global order for multiple components. A smaller tileset can set a ‘template’ ordering for a few components, then BED can trivially ‘repeat’ that order for a subsequent set of components.</p><mc-diorama theta="160" radius="8" autoplay loop><script type="text/mc-world">p -1    0  0 observer              facing=west  powered=false
 p  0    0 -1 piston                facing=down  extended=false
 p  0    0  0 light_gray_terracotta
 p  0    1  0 redstone_wire         east=side    west=side      power=0
@@ -163,7 +163,7 @@ t 20
 p  0    0  0</script></mc-diorama><pre><code>prefix | BED -->
     00 | A D G J ...
     01 | B E H K ...
-    10 | C F I L ...</code></pre><mc-diorama theta="110" phi="30" radius="9" speed="0.4" autoplay loop><script type="text/mc-world">p  0  0 -2 observer              facing=south powered=false
+    10 | C F I L ...</code></pre><mc-diorama theta="110" phi="30" radius="15" speed="0.4" autoplay loop><script type="text/mc-world">p  0  0 -2 observer              facing=south powered=false
 p  1  0 -2 observer              facing=south powered=false
 p  2  0 -2 observer              facing=south powered=false
 p  3  0 -2 observer              facing=south powered=false
@@ -435,4 +435,4 @@ p  0  0  2 powered=false
 t 69
 p  0  0 -2 powered=false
 t 72
-p  0  0  0</script></mc-diorama><section class="callout note"><h3>Note:</h3><p>This isn’t <strong>exactly</strong> correct because the pistons take 2gt to extend and retract, but it correctly explains the update order of the observers</p></section><h3 id="loc-2">4.1 - Single-Priority Loops</h3></main><footer><nav><ul><li class="btn"><a href="tilesets.html#tilesets">Prev: Tilesets</a></li></ul></nav></footer></body></html>
+p  0  0  0</script></mc-diorama><section class="callout note"><h3>Note:</h3><p>This isn’t <strong>exactly</strong> correct because the pistons take 2gt to extend and retract, but it correctly explains the update order of the observers</p></section><h3 id="loc-2">4.1 - Single-Priority Loops</h3></main><footer><nav><ul><li class="btn"><a href="tilesets.html#tilesets">Prev: Tilesets</a></li><li class="btn"><a href="tilesets-low-latency.html#loc-1">Next: Experimental Low-Latency Tilesets</a></li></ul></nav></footer></body></html>
